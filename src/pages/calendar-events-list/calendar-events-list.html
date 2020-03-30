@@ -1,0 +1,28 @@
+<!--
+  Generated template for the CalendarEventsList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Upcoming reminders</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button block (click)="addAllEvents();">Add all to calendar</button>
+  <button ion-button block color="danger" (click)="removeAllEvents();">Remove all from calendar</button>
+  <button ion-button block (click)="syncManually();">Sync Events</button>
+  
+  <ion-list>
+    <ion-item *ngFor="let event of events; let i = index;">
+      <h2>{{ event.InsType }}</h2>
+      <h2>{{ event.RegPlate }}</h2>      
+      <h3>Expires: {{ event.EndDate.toDateString() }}</h3>
+      <!--<h3>{{ event.endDate }} </h3>-->
+      <button *ngIf="!event.isInCalendar;" ion-button rounded (click)="addEventToCalendar(i);">Add to calendar</button>
+      <button *ngIf="event.isInCalendar;" ion-button color="danger" rounded (click)="removeEventFromCalendar(i);">Remove from calendar</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

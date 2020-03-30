@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>App Name</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form #userForm="ngForm" (ngSubmit)="logForm(userForm)" novalidate>
+    <ion-item>
+      <ion-input placeholder="Phone number" type="tel" required [(ngModel)]="phoneNumber" name="phone" #phone="ngModel"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="phone.valid || phone.pristine" color="danger" id="phone-error-message">
+      <p>Phone number is required</p>
+    </ion-item>
+    <button ion-button type="submit" block [disabled]="!userForm.form.valid">Log-in</button>
+  </form>
+</ion-content>
